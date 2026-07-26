@@ -5,12 +5,15 @@ from ship import Ship
 from arsenal import Arsenal
 #from alien import Alien
 from alien_fleet import AlienFleet
+from game_stats import GameStats
+from time import sleep
 
 class AlienInvasion:
 
     def __init__(self):  
         pygame.init()
         self.settings = Settings()
+        self.game_stats = GameStats(self.settings.starting_ship_count) 
 
         self.screen = pygame.display.set_mode(
         (self.settings.screen_w, 
@@ -37,6 +40,7 @@ class AlienInvasion:
         self.ship = Ship(self, Arsenal(self))
         self.alien_fleet = AlienFleet(self) 
         self.alien_fleet.create_fleet() 
+        self.game_active = True
 
 
 
@@ -44,9 +48,10 @@ class AlienInvasion:
         #game loop
         while self.running:
             self._check_events()
-            self.ship.update()
-            self.alien_fleet.update_fleet()
-            self._collisions()
+            if self.game_active:
+                self.ship.update()
+                self.alien_fleet.update_fleet()
+                self._collisions()
 
             self._update_screen()
             self.clock.tick(self.settings.FPS)
@@ -54,14 +59,14 @@ class AlienInvasion:
     def _collisions(self):
         #check collisions for ship
         if self.ship.check_collisions(self.alien_fleet.fleet):
-            self._reset_level()
+            self._check_game_status()
 
             #the alien fleet to reset
             #ship to recenter to where it was
             #subtract one life if possible
 
         if self.alien_fleet.check_fleet_bottom(): 
-            self._reset_level()
+            self._check_game_status()
         #check collisions for the bottom of the screen
         
          #check collisions of projectiles and aliens
@@ -73,7 +78,15 @@ class AlienInvasion:
         if self.alien_fleet.check_destroyed_status():
             self._reset_level()
 
-    
+    def _check_game_status(self):
+        
+        if self.game_stats.ships_left >0:
+            self.game_stats.ships_left -= 1
+            self._reset_level
+            sleep(0.5)
+
+        else:
+            self.game_active = False 
 
         
         

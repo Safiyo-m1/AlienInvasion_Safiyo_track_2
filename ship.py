@@ -50,7 +50,7 @@ class Ship:
         self.arsenal.draw()
         self.screen.blit(self.image, self.rect) 
 
-    def fire(self):
+    def fire(self): 
         return self.arsenal.fire_bullet()
 
     def check_collisions(self, other_group):
