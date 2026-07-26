@@ -10,8 +10,8 @@ class Settings:
         self.bg_file = Path.cwd()/ 'Assets'/ 'images' / 'Starbasesnow.png'
 
         self.ship_file = Path.cwd() / 'Assets' / 'Images' / 'ship2(no bg).png'
-        self.ship_w = 110       
-        self.ship_h = 100
+        self.ship_w = 110      
+        self.ship_h = 80
         self.ship_speed = 5
 
         self.bullet_file = Path.cwd()/ 'Assets'/ 'images' / 'laserBlast.png'
