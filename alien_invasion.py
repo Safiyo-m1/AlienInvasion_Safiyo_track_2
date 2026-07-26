@@ -44,9 +44,31 @@ class AlienInvasion:
             self._check_events()
             self.ship.update()
             self.alien_fleet.update_fleet()
+            self._collisions()
 
             self._update_screen()
             self.clock.tick(self.settings.FPS)
+
+    def _collisions(self):
+        #check collisions for ship
+        if self.ship.check_collisions(self.alien_fleet.fleet):
+            self._reset_level()
+
+            #the alien fleet to reset
+            #ship to recenter to where it was
+            #subtract one life if possible
+
+        #check collisions for the bottom of the screen
+       
+        collisions = self.alien_fleet.check_collisions(self.ship.arsenal.arsenal)
+
+        #check collisions of projectiles and aliens
+        pass
+    def _reset_level(self):
+        self.ship.arsenal.arsenal.empty()
+        self.alien_fleet.fleet.empty()
+        self.alien_fleet.create_fleet()
+
 
     def _update_screen(self):
         self.screen.blit(self.bg, (0,0))
@@ -91,4 +113,3 @@ class AlienInvasion:
 if __name__ == '__main__':
     ai = AlienInvasion()
     ai.run_game() 
-
