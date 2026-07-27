@@ -4,16 +4,16 @@ class Settings:
 
     def __init__(self):
         self.name: str = 'Alien Invasion'
-        self.screen_w = 1200
-        self.screen_h = 800
+        self.screen_w = 1000
+        self.screen_h = 700 
         self.FPS = 60
         self.bg_file = Path.cwd()/ 'Assets'/ 'images' / 'Starbasesnow.png'
         self.difficulty_scale = 1.1
         self.scores_file = Path.cwd()/ 'Assets'/ 'file' / 'scores.json' 
 
         self.ship_file = Path.cwd() / 'Assets' / 'Images' / 'ship2(no bg).png'
-        self.ship_w = 110      
-        self.ship_h = 80
+        self.ship_w = 40      
+        self.ship_h = 40
         
 
         self.bullet_file = Path.cwd()/ 'Assets'/ 'images' / 'laserBlast.png'
