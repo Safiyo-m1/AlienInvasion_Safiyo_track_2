@@ -11,10 +11,11 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from alien_invasion import AlienInvasion
 
-
 class HUD:
+    """Displays the Heads-Up Display, showing score, high score, level, and ships remaining."""
 
     def __init__(self, game: 'AlienInvasion') -> None:
+        """Initialize the HUD's font, layout, and initial display values."""
         self.game = game
         self.screen = game.screen
         self.boundaries = self.screen.get_rect()
@@ -30,6 +31,7 @@ class HUD:
         self._update_level()
 
     def _update_max_score(self):
+        """Render and position the max score display."""
         max_score_str = f"Max Score: {self.game_stats.max_score:,}"
         self.max_score_image = self.font.render(max_score_str, True, self.settings.text_color, None)
         self.max_score_rect = self.max_score_image.get_rect()
@@ -37,6 +39,7 @@ class HUD:
         self.max_score_rect.top = self.padding
 
     def _update_hi_score(self):
+        """Render and position the high score display."""
         hi_score_str = f"Hi-Score: {self.game_stats.hi_score:,}"
         self.hi_score_image = self.font.render(hi_score_str, True, self.settings.text_color, None)
         self.hi_score_rect = self.hi_score_image.get_rect()
@@ -44,6 +47,7 @@ class HUD:
         self.hi_score_rect.top = self.padding
 
     def _update_score(self):
+        """Render and position the current score display."""
         score_str = f"Score: {self.game_stats.score:,}"
         self.score_image = self.font.render(score_str, True, self.settings.text_color, None)
         self.score_rect = self.score_image.get_rect()
@@ -51,6 +55,7 @@ class HUD:
         self.score_rect.top = self.max_score_rect.bottom + 10
 
     def _update_level(self):
+        """Render and position the current level display."""
         level_str = f"Level: {self.game_stats.level}"
         self.level_image = self.font.render(level_str, True, self.settings.text_color, None)
         self.level_rect = self.level_image.get_rect()
@@ -58,6 +63,7 @@ class HUD:
         self.level_rect.top = self.padding
 
     def _draw_ships(self):
+        """Draw an icon for each remaining ship below the level display."""
         current_x = self.padding
         current_y = self.level_rect.bottom + 10
         ship_image = pygame.image.load(self.settings.ship_file)
@@ -69,12 +75,14 @@ class HUD:
             current_x += ship_image.get_width() + 10
 
     def update_scores(self):
+        """Refresh all HUD display elements: max score, high score, score, and level."""
         self._update_max_score()
         self._update_hi_score()
         self._update_score()
         self._update_level()
 
     def draw(self):
+        """Draw all HUD elements — scores, level, and ship icons — to the screen."""
         self.screen.blit(self.max_score_image, self.max_score_rect)
         self.screen.blit(self.hi_score_image, self.hi_score_rect)
         self.screen.blit(self.score_image, self.score_rect)

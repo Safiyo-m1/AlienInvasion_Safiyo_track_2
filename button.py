@@ -11,10 +11,11 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from alien_invasion import AlienInvasion
-
 class Button:
+    """Represents a clickable Play button, including its appearance and label."""
 
     def __init__(self, game: 'AlienInvasion', msg) -> None:
+        """Initialize the button's size, position, font, and label text."""
         self.game = game
         self.screen = game.screen
         self.boundaries = game.screen.get_rect()
@@ -26,13 +27,16 @@ class Button:
         self._prep_msg(msg)
 
     def _prep_msg(self, msg) -> None:
+        """Render the button's message text and center it within the button."""
         self.msg_image = self.font.render(msg, True, self.settings.text_color, None)
         self.msg_image_rect = self.msg_image.get_rect()
         self.msg_image_rect.center = self.rect.center
 
     def draw(self) -> None:
+        """Draw the button's background and label text to the screen."""
         self.screen.fill(self.settings.button_color, self.rect)
         self.screen.blit(self.msg_image, self.msg_image_rect)
 
     def check_clicked(self, mouse_pos) -> bool:
+        """Check whether the given mouse position is within the button's bounds."""
         return self.rect.collidepoint(mouse_pos) 
