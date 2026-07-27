@@ -3,6 +3,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from alien_invasion import AlienInvasion
 
+
 class GameStats():
 
     def __init__(self, game: 'AlienInvasion') -> None:
@@ -14,7 +15,7 @@ class GameStats():
 
     def init_saved_scores(self):
         self.path = self.settings.scores_file
-        if self.path.exists() and self.path.stat.__sizeof__> 80: 
+        if self.path.exists() and self.path.stat().st_size > 0:
             contents = self.path.read_text()
             scores = json.loads(contents)
             self.hi_score = scores.get('hi_score', 0)
@@ -44,29 +45,29 @@ class GameStats():
         self.level = 1
 
     def update(self, collisions) -> None:
-        # update score
+    # update score
         self._update_score(collisions)
 
-        # update max_score
-        self._updtae_max_score()
+    # update max_score
+        self._update_max_score()
 
-        #update self.hi_score
+    #update self.hi_score
         self._update_hi_score()
 
 
-    def _updtae_max_score(self):
+    def _update_max_score(self):
         if self.score > self.max_score:
             self.max_score =  self.score
 
-        def _updtae_hi_score(self):
-            if self.score > self.hi_score:
-                self.hi_score =  self.score
+    def _update_hi_score(self):
+        if self.score > self.hi_score:
+            self.hi_score =  self.score
 
-        
+    
 
     def _update_score(self, collisions) -> None:
         for alien in collisions.values():
             self.score += self.settings.alien_points
 
     def update_level(self):
-        self.level += 1
+      self.level += 1  
