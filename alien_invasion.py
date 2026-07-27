@@ -1,3 +1,10 @@
+"""
+Fighter Invasion - Custom Assets Track
+Author: Safiyo Mohamed
+Purpose: Main game class that initializes the game, runs the game loop, and manages collisions and game state.
+Starter code: Based on Alien Invasion tutorial, forked from RedBeard41/alien_Invasion_starter
+Date: July 26, 2026
+"""
 import sys
 import pygame
 from settings import Settings

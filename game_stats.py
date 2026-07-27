@@ -1,3 +1,10 @@
+"""
+Fighter Invasion - Custom Assets Track
+Author: Safiyo Mohamed
+Purpose: Tracks game statistics such as score, high score, and remaining ships/lives.
+Starter code: Based on Alien Invasion tutorial, forked from RedBeard41/alien_Invasion_starter
+Date: July 26, 2026
+"""
 import json 
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:

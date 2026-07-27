@@ -1,3 +1,10 @@
+"""
+Fighter Invasion - Custom Assets Track
+Author: Safiyo Mohamed
+Purpose: Represents an individual alien sprite, including its image and position.
+Starter code: Based on Alien Invasion tutorial, forked from RedBeard41/alien_Invasion_starter
+Date: July 26, 2026
+"""
 import pygame
 from pygame.sprite import Sprite
 from typing import TYPE_CHECKING

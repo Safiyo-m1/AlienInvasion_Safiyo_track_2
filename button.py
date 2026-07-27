@@ -1,3 +1,10 @@
+"""
+Fighter Invasion - Custom Assets Track
+Author: Safiyo Mohamed
+Purpose: Represents the Play button, including its appearance and click detection.
+Starter code: Based on Alien Invasion tutorial, forked from RedBeard41/alien_Invasion_starter
+Date: July 26, 2026
+"""
 import pygame.font
 
 from typing import TYPE_CHECKING
