@@ -37,7 +37,7 @@ class AlienFleet:
         x_offset, y_offset = self.calculate_offset(alien_w, alien_h, screen_w, fleet_w, fleet_h)
 
 
-        self.create_rectangle_fleet(alien_w, alien_h, fleet_w, fleet_h, x_offset, y_offset)
+        self.create_wedge_fleet(alien_w, alien_h, fleet_w, fleet_h, x_offset, y_offset) 
 
     def create_rectangle_fleet(self, alien_w, alien_h, fleet_w, fleet_h, x_offset, y_offset):
         """Create aliens in a rectangular grid pattern, skipping alternating rows and columns."""
@@ -50,6 +50,20 @@ class AlienFleet:
                     continue
 
                 self._create_alien(current_x, current_y)
+
+
+    def create_wedge_fleet(self, alien_w, alien_h, fleet_w, fleet_h, x_offset, y_offset):
+        """Create aliens in a triangular wedge formation instead of a full grid."""
+        gap = 1.5
+        center_col = fleet_w // 2
+        for row in range(fleet_h):
+            for col in range(fleet_w):
+                if abs(col - center_col) > row:
+                    continue
+                current_x = int(alien_w * gap * col + x_offset)
+                current_y = int(alien_h * gap * row + y_offset)
+                self._create_alien(current_x, current_y)
+
 
     def calculate_offset(self, alien_w, alien_h, screen_w, fleet_w, fleet_h):
         """Calculate the x and y offset needed to center the fleet on screen."""
