@@ -43,7 +43,7 @@ class Alien(Sprite):
 
     def check_edges(self):
         """Check whether the alien has reached the left or right edge of the screen."""
-        return(self.rect.right == self.boundries.right or self.rect.left <= self.boundries.left)
+        return(self.rect.right >= self.boundries.right or self.rect.left <= self.boundries.left)
 
 
     def draw_alien(self):
