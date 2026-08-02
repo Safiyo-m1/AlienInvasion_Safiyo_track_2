@@ -29,7 +29,7 @@ class Settings:
         self.laser_sound = Path.cwd()/ 'Assets'/ 'sound' / 'laser.mp3'
         self.impact_sound = Path.cwd()/ 'Assets'/ 'sound' / 'impactSound.mp3'
 
-        self.alien_file = Path.cwd()/ 'Assets'/ 'images' / 'enemy_4.png'
+        self.alien_file = Path.cwd()/ 'Assets'/ 'images' / 'ufo_alien.png'
         self.alien_w = 50
         self.alien_h = 80
         self.fleet_direction = 1
