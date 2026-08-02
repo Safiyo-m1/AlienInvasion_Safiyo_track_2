@@ -44,6 +44,6 @@ class Arsenal:
         """Fire a new bullet if the arsenal hasn't reached its maximum capacity."""
         if len(self.arsenal) < self.settings.bullet_amount:
             new_bullet = Bullet(self.game)
-        self.arsenal.add(new_bullet)
-        return True
+            self.arsenal.add(new_bullet)
+            return True
         return False 
